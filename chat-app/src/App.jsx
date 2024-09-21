@@ -67,12 +67,12 @@ function App() {
         } />
         <Route path='/chat' element={
           <privateRoute>
-          <Profile />
+          <Chat />
           </privateRoute>
         } />
         <Route path='/profile' element={
           <privateRoute>
-          <Chat />
+          <Profile />
           </privateRoute>
         } />
         <Route path="*" element={ <Navigate to="/auth" />}/>
