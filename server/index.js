@@ -23,6 +23,10 @@ app.use(
   })
 );
 
+app.get('/', async (req, res) => {
+    res.json({ msg: 'Welcome to Online Auction System API' });
+});
+
 app.use("/uploads/profiles", express.static("uploads/profiles"));
 app.use("/uploads/files", express.static("uploads/files"));
 
