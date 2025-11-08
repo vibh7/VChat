@@ -9,15 +9,8 @@ export default defineConfig({
     chunkSizeWarningLimit: 1000, // prevent chunk size warnings
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          if (id.includes("node_modules")) {
-            if (id.includes("react") || id.includes("react-dom"))
-              return "vendor_react";
-            if (id.includes("lodash")) return "vendor_lodash";
-            return "vendor";
-          }
-        },
-      },
+        manualChunks: undefined
+      }
     },
     commonjsOptions: {
       transformMixedEsModules: true, // fixes mixed esm/cjs libs
