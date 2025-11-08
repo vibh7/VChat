@@ -19,7 +19,7 @@ import { useAppStore } from "@/store";
 import { HOST, SEARCH_CONTACTS_ROUTES } from "@/lib/constants";
 import apiClient from "@/lib/api-client";
 import { animationDefaultOptions, getColor } from "@/lib/utils";
-import Lottie from "react-lottie";
+import Lottie from "react-lottie-player";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 const NewDM = () => {

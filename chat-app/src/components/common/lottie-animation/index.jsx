@@ -1,15 +1,19 @@
 import { animationDefaultOptions } from "@/lib/utils";
-import Lottie from "react-lottie";
+import Lottie from "react-lottie-player";
 
 const LottieAnimation = () => {
   return (
     <Lottie
-      isClickToPauseDisabled={true}
-      options={animationDefaultOptions}
-      height={200}
-      width={200}
+      loop
+      play
+      animationData={animationDefaultOptions.animationData}
+      style={{ width: 200, height: 200 }}
+      rendererSettings={{
+        preserveAspectRatio: "xMidYMid slice",
+      }}
     />
   );
 };
 
 export default LottieAnimation;
+
