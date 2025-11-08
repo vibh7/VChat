@@ -15,6 +15,7 @@ const app = express();
 const port = process.env.PORT;
 const databaseURL = process.env.DATABSE_URL;
 
+console.log("port", port);
 app.use(
   cors({
     origin: [process.env.ORIGIN],
@@ -45,7 +46,15 @@ const server = app.listen(port, () => {
 setupSocket(server);
 
 mongoose
-  .connect(databaseURL)
+  .connect(databaseURL,{
+    maxPoolSize: 10,                // reasonable pool size
+      socketTimeoutMS: 60000,         // socket timeout
+      serverSelectionTimeoutMS: 5000, // fail fast if server unreachable
+      connectTimeoutMS: 10000,        // connection timeout
+      heartbeatFrequencyMS: 10000,    // frequency of driver heartbeats
+      retryWrites: true,              // automatic retry for transient errors
+      appName: "MyApp",               // optional for clarity in Atlas logs
+    })
   .then(() => {
     console.log("DB Connetion Successfull");
   })

@@ -1,4 +1,4 @@
-import Background from "../../assets/login2.png";
+import Background from "../../assets/login3.png";
 import Victory from "../../assets/victory.svg";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
@@ -84,93 +84,109 @@ const Auth = () => {
     }
   };
 
+
   return (
-    <div className="h-[100vh] w-[100vw] flex items-center justify-center">
-      <div className="h-[100vh] bg-[#1c1d25]  border-2 border-white  text-cyan-50  text-opacity-90 shadow-2xl w-[80vw] md:w-[90vw] lg:w-[70vw] xl:w-[60vw] rounded-3xl grid xl:grid-cols-2">
-        <div className="flex flex-col gap-10 items-center justify-center">
-          <div className="flex  items-center justify-center flex-col">
-            <div className="flex  items-center justify-center">
-              <h1 className="text-5xl md:text-4xl font-bold">Welcome to</h1>
-              <img src={Victory} className="h-[100px]" />
-              <h1 className="text-5xl md:text-4xl font-bold">Chat</h1>
-            </div>
-            <p className="font-medium text-center">
-              Signup with 2 demo account and try out this chat app.
-            </p>
-            <p className="font-medium text-center">
-              Please Login after signup
-            </p>
+    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-[#141620] via-[#191b25] to-[#111116] relative overflow-hidden">
+      {/* floating background blur */}
+      <div className="absolute -top-32 -left-32 w-[400px] h-[400px] bg-purple-600 opacity-30 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-600 opacity-30 rounded-full blur-3xl animate-pulse"></div>
+
+      <div className="relative z-10 backdrop-blur-xl border border-white/10 shadow-2xl rounded-3xl flex flex-col xl:flex-row overflow-hidden w-[90vw] md:w-[70vw] lg:w-[60vw] xl:w-[55vw] bg-white/5">
+        {/* Left Panel */}
+        <div className="flex flex-col justify-center items-center gap-8 w-full xl:w-1/2 p-10 text-white">
+          <div className="flex items-center justify-center gap-3">
+            <h1 className="text-4xl font-bold">Welcome to</h1>
+            {/* <img src={Victory} alt="Logo" className="h-14" /> */}
+            <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
+              VChat
+            </h1>
           </div>
-          <div className="flex items-center justify-center w-full ">
-            <Tabs defaultValue="login" className="w-3/4 ">
-              <TabsList className="bg-transparent rounded-none w-full ">
-                <TabsTrigger
-                  className="data-[state=active]:bg-transparen text-opacity-90 border-b-2 text-cyan-100 rounded-none w-full data-[state=active]:text-green-500  data-[state=active]:font-semibold data-[state=active]:border-b-purple-500 p-3 transition-all duration-300"
-                  value="login"
-                >
-                  Login
-                </TabsTrigger>
-                <TabsTrigger
-                  className="data-[state=active]:bg-transparent text-opacity-90 border-b-2 text-cyan-100  rounded-none w-full data-[state=active]:text-green-500  data-[state=active]:font-semibold data-[state=active]:border-b-purple-500 p-3 transition-all duration-300 "
-                  value="signup"
-                >
-                  Signup
-                </TabsTrigger>
-              </TabsList>
-              <TabsContent value="login" className="flex flex-col gap-5 mt-10 text-black">
-                <Input
-                  placeholder="Email"
-                  type="email"
-                  className="rounded-full p-6"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <Input
-                  placeholder="Password"
-                  type="password"
-                  className="rounded-full p-6"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <Button className="rounded-full p-6 hover:bg-[#363849] transition-all duration-300" onClick={handleLogin}>
-                  Login
-                </Button>
-              </TabsContent>
-              <TabsContent value="signup" className="flex flex-col gap-5 text-black ">
-                <Input
-                  placeholder="Email"
-                  type="email"
-                  className="rounded-full p-6"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <Input
-                  placeholder="Password"
-                  type="password"
-                  className="rounded-full p-6"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <Input
-                  placeholder="Confirm Password"
-                  type="password"
-                  className="rounded-full p-6"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-                <Button className="rounded-full p-6 bg-[#1c1d25] hover:bg-[#363849] transition-all duration-300" onClick={handleSignup}>
-                  Signup
-                </Button>
-              </TabsContent>
-            </Tabs>
-          </div>
-        </div>
-        <div className="hidden xl:flex justify-center items-center ">
-          <img src={Background} className="h-[700px] " />
+
+          <p className="text-center text-gray-300 text-sm md:text-base">
+            Create two demo accounts to try out real-time chat. Already have an account? Log in below.
+          </p>
+
+          <Tabs defaultValue="login" className="w-full max-w-sm">
+            <TabsList className="bg-transparent border-b border-white/10 flex justify-center gap-6">
+              <TabsTrigger
+                value="login"
+                className="data-[state=active]:border-b-2 border-purple-500 text-gray-300 data-[state=active]:text-purple-400 pb-2 font-medium transition-all"
+              >
+                Login
+              </TabsTrigger>
+              <TabsTrigger
+                value="signup"
+                className="data-[state=active]:border-b-2 border-purple-500 text-gray-300 data-[state=active]:text-purple-400 pb-2 font-medium transition-all"
+              >
+                Signup
+              </TabsTrigger>
+            </TabsList>
+
+            {/* LOGIN TAB */}
+            <TabsContent value="login" className="flex flex-col gap-5 mt-8">
+              <Input
+                placeholder="Email"
+                type="email"
+                className="rounded-xl p-5 bg-white/10 text-white placeholder:text-gray-400 border-none focus:ring-2 focus:ring-purple-500"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Input
+                placeholder="Password"
+                type="password"
+                className="rounded-xl p-5 bg-white/10 text-white placeholder:text-gray-400 border-none focus:ring-2 focus:ring-purple-500"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <Button
+                className="rounded-xl p-5 bg-gradient-to-r from-purple-500 to-cyan-500 hover:opacity-90 transition-all font-semibold"
+                onClick={handleLogin}
+              >
+                Login
+              </Button>
+            </TabsContent>
+
+            {/* SIGNUP TAB */}
+            <TabsContent value="signup" className="flex flex-col gap-5 mt-8">
+              <Input
+                placeholder="Email"
+                type="email"
+                className="rounded-xl p-5 bg-white/10 text-white placeholder:text-gray-400 border-none focus:ring-2 focus:ring-purple-500"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Input
+                placeholder="Password"
+                type="password"
+                className="rounded-xl p-5 bg-white/10 text-white placeholder:text-gray-400 border-none focus:ring-2 focus:ring-purple-500"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <Input
+                placeholder="Confirm Password"
+                type="password"
+                className="rounded-xl p-5 bg-white/10 text-white placeholder:text-gray-400 border-none focus:ring-2 focus:ring-purple-500"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+              <Button
+                className="rounded-xl p-5 bg-gradient-to-r from-purple-500 to-cyan-500 hover:opacity-90 transition-all font-semibold"
+                onClick={handleSignup}
+              >
+                Signup
+              </Button>
+            </TabsContent>
+          </Tabs>
         </div>
 
-        {/* Login Signup COmponent */}
-        {/* Branding */}
+        {/* Right Panel */}
+        <div className="hidden xl:flex items-center justify-center bg-[#111116] relative">
+          <img
+            src={Background}
+            alt="Login Illustration"
+            className="h-[650px] object-contain opacity-90 drop-shadow-[0_0_20px_rgba(128,0,255,0.3)]"
+          />
+        </div>
       </div>
     </div>
   );

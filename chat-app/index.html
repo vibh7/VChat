@@ -5,9 +5,80 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>V-Chat</title>
+<style>
+      /* ========== Global loader styles ========== */
+      #loader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #eef2f3, #8e9eab);
+        font-family: "Poppins", sans-serif;
+        z-index: 9999;
+        opacity: 1;
+        transition: opacity 0.6s ease-out;
+      }
+
+      #loader.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .spinner {
+        width: 60px;
+        height: 60px;
+        border: 5px solid rgba(255, 255, 255, 0.3);
+        border-top: 5px solid #0078ff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        box-shadow: 0 0 20px rgba(0, 120, 255, 0.3);
+      }
+
+      .loading-text {
+        margin-top: 20px;
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: #ffffff;
+        letter-spacing: 1px;
+        animation: pulse 1.5s ease-in-out infinite;
+        text-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 0.6;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+    </style>
   </head>
   <body>
+    <div id="loader">
+      <div class="spinner"></div>
+      <div class="loading-text">Loading your experience...</div>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Fade out loader after React app mounts
+      window.addEventListener("load", () => {
+        const loader = document.getElementById("loader");
+        if (loader) {
+          loader.classList.add("fade-out");
+          setTimeout(() => loader.remove(), 600); // Wait for fade animation
+        }
+      });
+    </script>
   </body>
 </html>

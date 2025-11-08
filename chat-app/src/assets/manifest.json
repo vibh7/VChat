@@ -1,0 +1,28 @@
+
+{
+  "manifest_version": 3,
+  "name": "React Extension Example",
+  "version": "1.0",
+  "description": "React app running as Chrome extension",
+  "action": {
+    "default_popup": "index.html"
+  },
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["https://*/*", "http://*/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "index.html",
+        "background.js",
+        "assets/*",
+        "*.js",
+        "*.css",
+        "icons/*"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
