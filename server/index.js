@@ -18,7 +18,7 @@ const databaseURL = process.env.DATABSE_URL;
 console.log("port", port);
 app.use(
   cors({
-    origin: [process.env.ORIGIN],
+    origin: [process.env.ORIGIN,"https://vchat-smoky.vercel.app"],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })
